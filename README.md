@@ -4,7 +4,11 @@ Este é um framework mvc php
 
 ## Contém
 Bootstrap 4.1.3
+
 Font Awesome 5.2.0
+
+Jquery 3.3.1
+
 
 ## Downloads e Instalações obrigatorias
 
