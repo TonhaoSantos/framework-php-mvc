@@ -2,6 +2,10 @@
 
 Este é um framework mvc php
 
+## Contém
+Bootstrap 4.1.3
+Font Awesome 5.2.0
+
 ## Downloads e Instalações obrigatorias
 
 É preciso baixar e instalar Node.JS, NPM, Gulp, Bower e Composer para utilizar este projeto.
