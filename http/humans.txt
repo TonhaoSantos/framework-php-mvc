@@ -1,0 +1,34 @@
+# Apagar as 5 primeiras linhas deste documento.
+# Não efetuar a tradução das palavras que estão em ingles.
+# Para evitar spam, não coloque os email's.
+# Se tiver alguma dúvida sobre o preenchimento do humans.txt, acesse 'http://humanstxt.org/'.
+
+/* TEAM */
+	Papel na equipe/Função: Seu nome.
+	Site: email, link para um formulário de contato, etc.
+	Twitter: @usuário.
+	Location: Cidade, País.
+
+	Noob e Desenvolvedor: Tonhão Santos.
+	Site: vemlavaralouca.com.br.
+	Twitter: @SantosTonhao.
+	Location: São Paulo, Brasil.
+
+
+	[...]
+
+
+/* THANKS */
+	Name: Familia Santos
+	Location: São Paulo, Brasil.
+
+	[...]
+
+
+/* SITE */
+	Last update: 2018/08/06 (AAAA/MM/DD)
+	Language: Portugues
+	Doctype: HTML5
+	Web Languages: HTML5, CSS3, PHP
+	Components: Black Cat, Modernizr, jQuery, etc
+	Tools: Atom

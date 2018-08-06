@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+      <head>
+            <?php (file_exists(__DIR__ . "/components/meta/metadefault.phtml")) ? require_once __DIR__ . "/components/meta/metadefault.phtml" : ''; ?>
+      </head>
+      <body id="top">
+            <?php (file_exists(__DIR__ . "/components/header/headerdefault.phtml")) ? require_once __DIR__ . "/components/header/headerdefault.phtml" : ''; ?>
+
+            <?php $this->content(); ?>
+
+            <?php (file_exists(__DIR__ . "/components/footer/footerdefault.phtml")) ? require_once __DIR__ . "/components/footer/footerdefault.phtml" : ''; ?>
+      </body>
+</html>

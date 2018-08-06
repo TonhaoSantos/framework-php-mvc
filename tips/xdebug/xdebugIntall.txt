@@ -1,0 +1,54 @@
+1º Acesse o `http://xdebug.org/download.php` e baixe a versão correspondente ao seu sistema operacional e ao seu PHP.
+2º Se nao souber qual versão baixar, siga os passos 7º e 8º, copie todo o conteudo apresentado e cole neste `https://xdebug.org/wizard.php`, aperte `Alalyse my phpinfo() output` e sera apresentado qual devera ser baixado.
+3º Copie e cole o DLL que foi baixado no passo 1º no diretorio servidorweb/php/ext. Se você estiver trabalhando com XAMPP o caminho é `C:/xampp/php/ext`.
+4º Localize e abra o arquivo php.ini geralmente encontrado em `apache/bin`.
+5º Dentro do arquivo localize `output_buffering` e o desabilite `output_buffering = Off`.
+6º Ainda dentro do `php.ini` localize a sessão [xdebug], se a mesma não constar, siga ate o final do arquivo e inclua o codigo seguinto completo.
+
+Substitua o que estiver depois de [xdebug] por:
+zend_extension ="c:\xampp\php\ext\<nome do dll - Passo 2º>.dll"
+xdebug.remote_enable = 1
+xdebug.profiler_append = 0
+xdebug.profiler_enable = 1
+xdebug.profiler_enable_trigger = 0
+xdebug.profiler_output_dir = "c:\xampp\tmp"
+xdebug.profiler_output_name = cachegrind.out.%t.%p
+xdebug.remote_autostart = 1
+xdebug.remote_handler = dbgp
+xdebug.remote_mode = req
+xdebug.remote_host = 127.0.0.1
+xdebug.remote_log = "c:\xampp\tmp\xdebug.txt"
+xdebug.remote_port = 9000
+xdebug.trace_output_dir = "c:\xampp\tmp"
+; 3600 (1 hour), 36000 = 10h
+xdebug.remote_cookie_expire_time = 36000
+; protege o servidor em caso de loop infinito
+xdebug.max_nesting_level = 4 
+xdebug.collect_params = 1
+xdebug.show_local_vars = 1
+; mostra retornos GET do browser
+; mostra retornos POST dos campos username e password
+; Tambem serve para: COOKIE, ENV, FILES, REQUEST, SERVER and SESSION
+;xdebug.dump.GET = *
+;xdebug.dump.POST = username,password
+xdebug.default_enable = 1
+xdebug.collect_includes = 1
+xdebug.collect_return = 1
+xdebug.collect_vars = 1
+xdebug.dump_globals = 1
+xdebug.extended_info = 1
+xdebug.auto_trace = 1
+xdebug.trace_options = 1
+xdebug.trace_format = 0
+
+Salve o php.ini e reinicie seu servidor Web. Pronto seu XDebug está instalado.
+
+Para saber se o xdebug esta instalado:
+7º Crie um arquivo `phpinfo.php` na raiz do servidor
+8º Execute ele no navegador
+9º Aperte `ctrl + f` e digital `xdebug`, se esta categoria aparecer quer dizer que esta instalado.
+
+Utilziando o xdebug no VSCODE
+1º Procure e instalar a extensão `PHP Debug`
+2º Para ativar, siga File > Preferences > Settings
+3º Inclua com as aspas "php.validate.executablePath": "C:\\xampp\\php\\php.exe", atentar para o caminho pois o mesmo devera estar sendo apontado para o executavel do php 

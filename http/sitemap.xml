@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <!-- Estrutura básica, delete todos os comentários deste arquivo. -->
+   <!-- Pode-se vincular imagens link, vídeos e URL's. -->
+   <!-- Configure depois no Google, Bing e Yahoo. -->
+   <!-- Google : http://www.google.com.br/webmasters/ -->
+   <!-- Bing : http://www.bing.com/toolbox/webmaster/
+               http://www.bing.com/webmaster/help/how-to-submit-sitemaps-82a15bd4
+        Yahoo : http://siteexplorer.search.yahoo.com/submit -->
+   <url>
+      <!-- Obrigatório, Localição da página -->
+      <!-- Opcional, ultima atualização -->
+      <!-- Opcional, frequência da atualização "always, hourly, daily, weekly, monthly, yearly, never" -->
+      <!-- Opcional, prioridade entre as outras páginas 0.0 - 1.0 -->
+      <loc>http://www.dominio.com.br/</loc>
+      <lastmod>AAAA-MM-DD</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>http://www.dominio.com.br/teste.html</loc>
+      <lastmod>AAAA-MM-DD</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+</urlset>

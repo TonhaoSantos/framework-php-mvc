@@ -1,0 +1,6 @@
+PSR-0 – Esta PSR diz respeito à padronização de autoload. Mas cuidado, esta PSR está marcada como deprecated, ou seja, não se recomenda mais utiliza-la por existir outra PSR que trata do mesmo tema e é mais abrangente.
+PSR-1 – Padrão básico de codificação – Como um desenvolvedor deve no mínimo organizar o seu código
+PSR-2 – Guia de Estilo de codificação – Abrange o PSR-1 e visa diminuir o atrito na leitura de código escritos por equipes de diferentes projetos
+PSR-3 – Descreve uma interface comum para bibliotecas de Logging
+PSR-4 – É uma PSR mais abrangente que a PSR-0 mas mantém compatibilidade com ela
+PSR-7 – Descreve uma interface comum para representação de mensagens HTTP

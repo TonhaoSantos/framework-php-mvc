@@ -1,0 +1,19 @@
+/* Selos */
+- Consumidor: https://www.consumidor.gov.br/pages/principal/?1513022073318
+- Safe Browsing Google (webmaster): https://safebrowsing.google.com/
+                                    https://shopitos.com.br/blog/como-inserir-selo-e-certificado-do-google-safe-browsing-em-sua-loja-virtual/
+- Letsencrypt: https://letsencrypt.org/
+- SSL: https://www.rapidssl.com.br/
+       https://www.comodobr.com/
+     
+
+
+
+
+
+
+
+
+
+
+

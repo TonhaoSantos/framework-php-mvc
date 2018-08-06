@@ -1,0 +1,9 @@
+<!-- Verifica se a view->success existe -->
+<?php if(isset($this->errors)): ?>
+    <div class="alert alert-danger alert-box">
+        <!-- Imprimindo mensagem -->
+        <?php foreach ($this->errors as $msg): ?>
+            <p><i class="fas fa-exclamation-triangle"></i> <?php echo $msg; ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

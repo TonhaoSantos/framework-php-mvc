@@ -1,0 +1,250 @@
+# Habilitar o PHP 7.0
+#AddHandler application/x-httpd-php70 .php
+#<IfModule mod_suphp.c>
+#	suPHP_ConfigPath /opt/php70/lib
+#</IfModule>
+
+# Setando Timezone
+#<IfModule mod_env.c>
+#	SetEnv TZ America/Sao_Paulo
+#</IfModule>
+#php_value date.timezone 'America/Sao_Paulo'
+
+# Desabilitar assinatura do servidor
+ServerSignature Off
+
+# Força o uso do UTF8
+AddDefaultCharset utf-8
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Força https
+	#RewriteCond %{SERVER_PORT} 80
+	#RewriteRule ^(.*)$ https://www.ourbrasil.com.br/$1 [R,L]
+
+	# Força www no endereço
+	#Options +FollowSymLinks
+	#RewriteCond %{HTTP_HOST} ^ourbrasil.com.br [NC]
+	#RewriteRule ^(.*)$ https://www.ourbrasil.com.br/$1 [R=301,L]
+
+	# URL amigavel
+	RewriteCond %{SCRIPT_FILENAME} !-f
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	# Redireciona todas as requisições de arquivos web para um arquivo de tratamento
+	RewriteRule . public/main.php [NC]
+
+	# Bloqueando hotlinks
+	#RewriteCond %{HTTP_REFERER} !^$
+	#RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?ourbrasil.com [NC]
+	#RewriteRule \.(jpg|jpeg|png|gif)$ /imghotlink.png [NC,F,L]
+
+	# Retirar barra (/) no final da URL
+	#RewriteCond %{HTTP_HOST} !^\. [NC]
+	#RewriteRule ^(.+[^/])/$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+	#### SEGURANÇA ###
+	# HTTP Trace Method
+	#A fim de melhorar a segurança do seu site (e seus usuários), você deve desativar o método TRACE de seu servidor web.
+	#    Este método não tem uso real e pode ser usado incorretamente para ataques XST (cross-site tracing).
+	RewriteCond %{REQUEST_METHOD} ^TRACE
+	RewriteRule .* - [F]
+
+</IfModule>
+
+# Definindo UTF8 para as extenções
+<IfModule mod_mime.c>
+	AddCharset utf-8 .html .css .js .xml .json .rss
+</IfModule>
+
+# Etag
+<IfModule mod_headers.c>
+	Header unset ETag
+</IfModule>
+FileETag None
+
+# Cache
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresDefault                          "access plus 1 hour"
+	ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+	# Html
+	ExpiresByType text/html                 "access plus 0 seconds"
+
+	# Data
+	ExpiresByType text/xml                  "access plus 0 seconds"
+	ExpiresByType application/xml           "access plus 0 seconds"
+	ExpiresByType application/json          "access plus 0 seconds"
+
+	# Feed
+	ExpiresByType application/rss+xml       "access plus 1 hour"
+	ExpiresByType application/atom+xml      "access plus 1 hour"
+
+	# Favicon (não pode ser renomeado) - ver qual das duas usar
+	ExpiresByType image/vnd.microsoft.icon  "access plus 1 week"
+	ExpiresByType image/x-icon              "access plus 1 week"
+
+	# Media: images, video, audio
+	ExpiresByType image/gif                 "access plus 0 seconds"
+	ExpiresByType image/png                 "access plus 0 seconds"
+	ExpiresByType image/jpg                 "access plus 0 seconds"
+	ExpiresByType image/jpeg                "access plus 0 seconds"
+	ExpiresByType video/ogg                 "access plus 0 seconds"
+	ExpiresByType audio/ogg                 "access plus 0 seconds"
+	ExpiresByType video/mp4                 "access plus 0 seconds"
+	ExpiresByType video/webm                "access plus 0 seconds"
+
+	# HTC files
+	ExpiresByType text/x-component          "access plus 1 month"
+
+	# Webfonts
+    ExpiresByType font/truetype             "access plus 0 seconds"
+	ExpiresByType application/x-font-ttf    "access plus 0 seconds"
+    ExpiresByType font/opentype             "access plus 0 seconds"
+    ExpiresByType font/woff                 "access plus 0 seconds"
+	ExpiresByType application/x-font-woff   "access plus 0 seconds"
+    ExpiresByType image/svg+xml             "access plus 0 seconds"
+    ExpiresByType application/vnd.ms-fontobject "access plus 0 seconds"
+
+	# CSS / JS
+	ExpiresByType text/css                  "access plus 0 seconds"
+	ExpiresByType application/javascript    "access plus 0 seconds"
+	ExpiresByType text/javascript           "access plus 0 seconds"
+</IfModule>
+
+# Compressão de arquivos de texto
+<IfModule mod_deflate.c>
+	# Arquivos
+	AddOutputFilterByType DEFLATE text/html
+	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE text/javascript
+	AddOutputFilterByType DEFLATE text/xml
+	AddOutputFilterByType DEFLATE text/plain
+	AddOutputFilterByType DEFLATE image/x-icon
+	AddOutputFilterByType DEFLATE image/svg+xml
+	AddOutputFilterByType DEFLATE application/rss+xml
+	AddOutputFilterByType DEFLATE application/javascript
+	AddOutputFilterByType DEFLATE application/x-javascript
+	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE application/xhtml+xml
+	AddOutputFilterByType DEFLATE application/x-font
+	AddOutputFilterByType DEFLATE application/x-font-truetype
+	AddOutputFilterByType DEFLATE application/x-font-ttf
+	AddOutputFilterByType DEFLATE application/x-font-otf
+	AddOutputFilterByType DEFLATE application/x-font-opentype
+	AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+	AddOutputFilterByType DEFLATE font/ttf
+	AddOutputFilterByType DEFLATE font/otf
+	AddOutputFilterByType DEFLATE font/opentype
+
+	# navegadores
+	# Netscape 4.x
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	# Netscape 4.06-4.08
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+</IfModule>
+
+<IfModule mod_dir.c>
+	# Redefinindo o arquivo index padrão do servidor
+	DirectoryIndex public/main.php
+
+	# Encaminhando o usuario para outro lugar quando ele tentar entrar em uma pasta nao permitida
+	# Neste exemplo, apenas index.php permanecerá como um recurso de índice.
+	#<Directory "/foo">
+		# Desabilita este recurso
+	#	DirectoryIndex index.html
+	#	DirectoryIndex disabled
+		# Habilita este recurso
+	#	DirectoryIndex index.php
+	#</Directory>
+</IfModule>
+
+
+
+#### SEGURANÇA ###
+# Bloqueia a listagem de diretorio
+<IfModule mod_autoindex.c>
+   	Options -Indexes
+</IfModule>
+
+# HTTP Trace Method
+#A fim de melhorar a segurança do seu site (e seus usuários), você deve desativar o método TRACE de seu servidor web.
+#    Este método não tem uso real e pode ser usado incorretamente para ataques XST (cross-site tracing).
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_METHOD} ^TRACE
+	RewriteRule .* - [F]
+</IfModule>
+
+# Cabeçalhos
+<IfModule mod_headers.c>
+	# Content Security Policy (CSP)
+	#Evite ataques XSS, clickjacking e injeção de código implementando o cabeçalho CSP (Content Security Policy)
+	#    na resposta HTTP da sua página da web. O CSP instrui o navegador para carregar o conteúdo permitido para carregar no site.
+	#    Todos os navegadores não suportam o CSP, por isso você precisa verificar antes de implementá-lo.
+	#
+	#    Existem três maneiras de implementar cabeçalhos de CSP.
+	#    - Política de Segurança de Conteúdo - Nível 2 / 1.0
+	#    - X-Content-Security-Policy - Descontinuado
+	#    - X-Webkit-CSP - Descontinuado
+	#    - Se você ainda estiver usando um obsoleto, considere atualizar para o mais recente.
+	#Header set Content-Security-Policy "default-src 'self';"
+
+	# HTTP Strict Transport Security
+	#O cabeçalho HSTS (HTTP Strict Transport Security) garante que toda a comunicação de um navegador
+	#  seja enviada por HTTPS (HTTP Secure). Isso impede que os cliques HTTPS sejam solicitados e
+	#  redirecione as solicitações HTTP para HTTPS. Antes de implementar este cabeçalho, você deve
+	#  garantir que toda a página do seu site esteja acessível via HTTPS, caso contrário, eles serão bloqueados.
+	#  O cabeçalho HSTS é suportado em todas as principais versões mais recentes de um navegador como o IE, Firefox, Opera, Safari e Chrome. Existem três parâmetros de configuração.
+	##Header set Strict-Transport-Security "max-age=10886400; includeSubDomains; preload" env=HTTPS
+
+	# X-Frame-Options
+	#Use o cabeçalho X-Frame-Options para evitar a vulnerabilidade de Clickjacking no seu site.
+	#  Ao implementar esse cabeçalho, você instrui o navegador a não incorporar sua página da Web no frame / iframe.
+	#  Isso tem alguma limitação no suporte ao navegador, então você precisa verificar antes de implementá-lo.
+	##Header set X-Frame-Options DENY
+
+	# X-XSS-Protection
+	#O cabeçalho X-XSS-Protection pode evitar alguns níveis de ataques XSS (cross-site-scripting), e
+	#   isso é compatível com o IE 8+, Chrome, Opera, Safari e Android.
+    #   Google, Facebook, Github usam esse cabeçalho, e a maior parte da consultoria de testes de penetração pedirá que você implemente isso.
+	##Header set X-XSS-Protection "1; mode=block"
+
+	# Public-Key-Pins
+	#Minimize o risco de ataques do tipo man-in-the-middle (MITM) fixando o certificado.
+	#    Isso é possível com o cabeçalho HPKP (HTTP Public Key Pinning).
+	#Criar: https://report-uri.com/home/pkp_hash
+	#Testar: https://report-uri.com/home/pkp_analyse/
+	#Ordem das chaves Here is your PKP hash for vemlavaralouca.com.br, UbiquiTLS\E2\84\A2 DV RSA Server CA, COMODO RSA Certification Authority
+	##Header always set Public-Key-Pins "pin-sha256=\"6NrmwU+ert9JHaLJ9rEPHQMq52af9mFp1iAFA+9ienQ=\"; pin-sha256=\"grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME=\"; max-age=5184000; includeSubDomains"
+
+	# Referrer Policy
+	#Testar: https://securityheaders.io/
+	#Testar: https://www.htbridge.com/websec/
+	#Testar: https://httpsecurityreport.com/
+	#Testar: https://github.com/riramar/hsecscan
+	#Testar: https://hackertarget.com/http-header-check/
+	#Testar: https://tools.keycdn.com/curl
+	##Header set Referrer-Policy: strict-origin-when-cross-origin
+
+	# X-Content-Type-Options
+	#Bloqueio contra ataques "MIME-Type confusion"/" MIME sniffing"
+	#Impeça os riscos de segurança dos tipos MIME adicionando esse cabeçalho à
+	#    resposta HTTP da sua página da web. Ter este cabeçalho instruir o navegador a
+	#    considerar os tipos de arquivos definidos e proibir a detecção de conteúdo.
+	#    Existe apenas um parâmetro que você pode adicionar “nosniff”.
+	##Header set X-Content-Type-Options nosniff
+
+	# Access-Control-Allow-Origin
+	#Por razões de segurança, os navegadores restringem solicitações HTTP com origem iniciadas de dentro de scripts.
+	#    Por exemplo, XMLHttpRequest segue a mesma política. Assim, uma aplicação web usando XMLHttpRequest só poderia
+	#    fazer solicitações HTTP para seu próprio domínio. Para melhorar as aplicações web, os desenvolvedores perguntaram a
+	#    fornecedores de navegadores se poderiam permitir que XMLHttpRequest fizesse solicitações entre domínios.
+	##Header Set Access-Control-Allow-Origin "https://www.vemlavaralouca.com.br"
+
+
+</IfModule>

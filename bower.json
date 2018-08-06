@@ -1,0 +1,28 @@
+{
+  "name": "blackcat",
+  "description": "Um framework resposivo, com uma coleção de componentes flat feitos com HTML, CSS, Javascript.",
+  "keywords": [
+    "framework",
+    "front-end",
+    "flat",
+    "responsivo",
+    "responsive",
+    "css",
+    "mobile-first",
+    "web",
+    "mobile"
+  ],
+  "homepage": "https://github.com/TwoSheep/blackcat",
+  "author": "Two Sheep",
+  "license": "MIT",
+  "moduleType": "globals",
+  "ignore": [
+    "node_modules/",
+    "npm-debug.log",
+    "archive.zip",
+    "bower_components/"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  }
+}

@@ -1,0 +1,65 @@
+ <!-- Imprimindo o erro passado pelo controller -->
+	<div class="row">
+		<div class="col-md-12">
+			<?php $this->renderView('layout/alerts/_errors'); ?>
+		</div>
+	</div>
+
+
+
+
+<!-- Imprimindo o titulo da pagina definida do controller -->
+	<h1 class="h1">
+			<?php echo $this->getPageTitle(); ?>
+	</h1>
+
+
+
+
+
+
+<!-- Inserindo componente na view -->
+<?php (file_exists(dirname(__DIR__) . "/layout/components/tabs/mediafantabs.phtml")) ? require_once dirname(__DIR__) . "/layout/components/tabs/mediafantabs.phtml" : ''; ?>
+
+
+
+
+
+
+
+<!-- Acessando variavel passada na action -->
+<?php echo $this->view->nomeVariavel->nomeAtributo; ?>
+
+
+
+
+
+
+
+
+<!-- Capiturando o token passado no controller para validar o formulario, impedindo um ataque hacker -->
+<!-- Sempre inserir nos formulario, independete do formulario (Isso é uma segurança de veracidade do formulario) -->
+<input type="hidden" name="tokenForm" value="<?php echo $this->tokenForm; ?>">
+
+
+
+
+
+
+
+
+
+
+<!-- Retornando os cados passados para o input em caso de erro -->
+<input type="text" name="nomeCampo" class="form-control" value="<?php if (isset($this->inputs['nomeCampo'])) { echo $this->inputs['nomeCampo']; } elseif (isset($this->view->variavelSeTiver->nomeCampo)){ echo $this->view->variavelSeTiver->nomeCampo; } ?>">
+
+
+<!-- Imprimindo msg de erro depois do input em caso de erro -->
+<?php
+		if(isset($this->errors['email'])){
+				echo '<span class="help-block">' . $this->errors['email'] . '</span>';
+		}
+?>
+
+<!-- Adicionando classe em caso de retorno de erro -->
+<div class="form-group <?php echo (isset($this->inputs['password']) || isset($this->errors['password'])) ? 'has-error' : '' ?>">

@@ -1,0 +1,8 @@
+# Notice: Crawling in this website is prohibited unless you have express written permission.
+# In Contact: contato@twosheep.com.br
+# Test: https://support.google.com/webmasters/answer/6062598?vid=1-635792943520065292-2409506240&vid=1-635792943520065292-2409506240
+# www.robotstxt.org/
+# List of User Agent: http://www.robotstxt.org/db.html
+
+User-agent: *
+Sitemap: http://www.dominio.com.br/sitemap.xml

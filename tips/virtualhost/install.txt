@@ -1,0 +1,26 @@
+1º Ir ate a pasta principal do servidor.
+2º Ir ate bin > apache > apache+versão > conf.
+3º Editar o arquivo `httpd.conf`.
+4º Pesquisar por `Include conf/extra/httpd-vhosts.conf`, se estiver comentada, descomentar, salvar e fechar o arquivo.
+5º Recarregar o servidor.
+7º Ir ate a pasta principal do servidor.
+8º Ir ate bin > apache > apache+versão > conf > extra.
+9º Editar o arquivo `httpd-vhosts.conf`, incluir o seguinte codigo:
+
+    <VirtualHost *:porta>
+    ServerName nomeprojeto
+    DocumentRoot "c:/wamp64/www/nomeprojeto"
+    <Directory "c:/wamp64/www/nomeprojeto">
+        Options +Indexes +Includes +FollowSymLinks +MultiViews
+        AllowOverride All
+        #Require local
+        Require all granted
+    </Directory>
+    </VirtualHost>
+
+10º Salvar e fechar o arquivo.
+11º Recarregar o servidor.
+12º Ir ate C:\Windows\System32\drivers\etc
+13º Editar o arquivo `hosts`, incluir `127.0.0.1 mesmonomeprojetoanterior`
+14º Salvar e fechar o arquivo.
+15º Recarregar o servidor.

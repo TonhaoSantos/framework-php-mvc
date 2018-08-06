@@ -1,0 +1,29 @@
+<?php
+    header('HTTP/1.0 404 Not Found');
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <?php (file_exists(__DIR__ . "/../layout/components/meta/metaerrors.phtml")) ? require_once __DIR__ . "/../layout/components/meta/metaerrors.phtml" : ''; ?>
+    </head>
+    <body id="top">
+        <?php (file_exists(__DIR__ . "/../layout/components/header/headerdefault.phtml")) ? require_once __DIR__ . "/../layout/components/header/headerdefault.phtml" : ''; ?>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 error error_img">
+                    <img src="http://dominio.com.br/public/assets/img/404.png" alt="Omg Erro" class="error_img_responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 error error_txt">
+                    <h2>Eu simplesmente odeio quando alguem tenta me enrolar!</h2>
+                    <h1>404</h1>
+                    <h3>Página não encontrada!</h3>
+                </div>
+            </div>
+        </div>
+
+        <?php (file_exists(__DIR__ . "/../layout/components/footer/footerdefault.phtml")) ? require_once __DIR__ . "/../layout/components/footer/footerdefault.phtml" : ''; ?>
+  </body>
+</html>

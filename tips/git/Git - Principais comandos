@@ -1,0 +1,59 @@
+Git - Principais comandos
+
+/*************************************/
+/*************************************/
+
+git help
+git help NomeComandoQueSeQuerAjuda
+
+
+git config --list
+git config --global user.name "SeuNome"
+git config --global user.email "SeuEmail"
+-- Configurando alias para os comandos
+		git config --global alias.co checkout
+		git config --global alias.br branch
+		git config --global alias.ci commit
+		git config --global alias.st status
+
+cd ..
+cd NomedoDiretorio
+Clear          \\Limpar a tela
+exit          \\Sair
+
+git init
+git clone git://github.com/schacon/Projeto.git
+git clone git://github.com/schacon/Projeto.git NomeDoDiretorioEspecifico
+
+git status
+git branch
+git branch -a                      \\Ver branchs remotas
+
+git pull origin nomedobranch        \\Baixar
+git checkout NomedoBranch            \\Ir para branch
+git checkout -b nomedobranch          \\Criar Branch e ir para ela
+git add .
+git commit -m "description / observation"
+git push origin nomedobranch        \\Enviar
+git merge nomedobranch
+git checkout -- caminho\nomedoarquivo.ext          \\Desfazer alterações de um arquivo
+git checkout -b nomedabranchlocal origin/nomedabranchremota          \\Baixar uma branch remota e cria-la localmente
+git push origin nomedobranch_local:nomedobranch_remoto          \\Enviar as mudanças para o repositório remoto quando o branch local e remoto são diferentes
+git add -u          \\Remover arquivos que foram deletados
+git push origin :nomedobranch          \\Apagar um branch no repositório remoto
+git branch -d nomedobranch          \\Apagar uma branch local
+git branch -D nome do branch          \\Forçar deletar um branch local
+git merge --abort          \\Ignorar branch
+git clean -d -x -f          \\zerar alterações da branch
+git reset --hard origin/master          \\reinicia a master para origin/master
+git diff -- caminhoenomedoarquivo branch1..branch2          \\diferença de arquivos entre branchs
+
+
+
+
+Referências completas no link: http://git-scm.com/book/en
+
+Situações legais usando o GIT
+http://blog.wylkon.com.br/post/1592226091/conhecendo-git-continuacao
+
+http://gitready.com/

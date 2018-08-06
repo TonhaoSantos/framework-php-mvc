@@ -1,0 +1,9 @@
+<!-- Verifica se a view->success existe -->
+<?php if(isset($this->success)): ?>
+    <div class="alert alert-success alert-box">
+        <!-- Imprimindo mensagem -->
+        <?php foreach ($this->success as $msg): ?>
+            <p><i class="fas fa-check-circle"></i> <?php echo $msg; ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
